@@ -3,8 +3,11 @@ package com.chornobuk.practice4.repositories;
 import java.util.LinkedList;
 import java.util.List;
 
+import org.springframework.stereotype.Repository;
+
 import com.chornobuk.practice4.entities.User;
 
+@Repository
 public class UsersRepository {
 
     private final static List<User> users = new LinkedList<>();
