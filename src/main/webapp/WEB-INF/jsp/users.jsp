@@ -28,6 +28,6 @@ contentType="text/html;charset=UTF-8" language="java" %>
         </tr>
       </c:forEach>
     </table>
-    <a href="../main">Main</a>
+    <a href="../">Main</a>
   </body>
 </html>

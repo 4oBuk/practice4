@@ -22,7 +22,6 @@ public class UsersRepository {
         users.add(new User("Lee One", "lee.one@email.com", "leeOne"));
         users.add(new User("Ayanami Rei", "ayanami.rei@email.com", "ayanamiRei"));
         users.add(new User("Shinji Ikari", "shinji.ikari@email.com", "shinjiIkari"));
-
     }
 
     public User getByEmail(String email) {
