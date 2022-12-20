@@ -1,5 +1,7 @@
 package com.chornobuk.practice4.services;
 
+import java.util.List;
+
 import org.springframework.stereotype.Service;
 
 import com.chornobuk.practice4.entities.User;
@@ -20,5 +22,9 @@ public class UsersService {
             return user;
         }
         return null;
+    }
+
+    public List<User> getAllUsers() {
+        return usersRepository.getAll();
     }
 }

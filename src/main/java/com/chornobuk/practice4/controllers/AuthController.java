@@ -1,5 +1,7 @@
 package com.chornobuk.practice4.controllers;
 
+import java.io.IOException;
+
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -12,6 +14,7 @@ import com.chornobuk.practice4.entities.User;
 import com.chornobuk.practice4.services.UsersService;
 
 import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletResponse;
 
 @Controller
 @RequestMapping("auth")
@@ -30,14 +33,11 @@ public class AuthController {
     }
 
     @PostMapping("/login")
-    public String loginUser(@RequestParam("email") String email, @RequestParam("password") String password, Model model, HttpServletRequest request) {
+    public String loginUser(@RequestParam("email") String email, @RequestParam("password") String password, Model model) {
         User user = usersService.authorizeUser(email, password);
         if (user != null) {
-            request.getSession().setAttribute("user", user);
-            return "main";
+            return "redirect:/main";
         }
-        // set message for error and
-
         // default page is login page, if user is authenticated
         // show page with users I can create a controller for a default page
         // do redirect to prevent log in multiple times
@@ -45,7 +45,7 @@ public class AuthController {
         return "login";
     }
 
-    @PostMapping("/logout")
+    @GetMapping("/logout")
     public String postMethodName(HttpServletRequest request) {
         request.getSession().invalidate();
         return "login";
