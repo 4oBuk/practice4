@@ -30,15 +30,11 @@ public class AuthController {
 
     @PostMapping("/login")
     public String loginUser(@RequestParam("email") String email, @RequestParam("password") String password, Model model, HttpServletRequest request) {
-        // get data from form as user
         User user = usersService.authorizeUser(email, password);
         if (user != null) {
             request.getSession().setAttribute("user", user);
             return "redirect:/";
         }
-        // default page is login page, if user is authenticated
-        // show page with users I can create a controller for a default page
-        // do redirect to prevent log in multiple times
         model.addAttribute("errorMessage", loginFailedMessage);
         return "login";
     }
